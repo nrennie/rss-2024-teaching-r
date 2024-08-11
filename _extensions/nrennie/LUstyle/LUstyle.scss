@@ -95,11 +95,16 @@ section.has-dark-background a, section.has-dark-background a:hover {
 }
 
 .reveal .slide-menu-button {
-    left: 5px;
-    top: 15px;
-    padding-left: 10px;
-    color: #b4b7b8;
-  }
+  left: 5px;
+  bottom: 25px;
+  padding-bottom: 8px;
+}
+  
+.reveal .drop-button {
+  left: 5px;
+  bottom: 25px;
+  padding-bottom: 10px;
+}
 
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
