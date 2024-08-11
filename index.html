@@ -10,7 +10,7 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.55">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="RSS International Conference 2024 Nicola Rennie">
   <title>More interactive, more engaging</title>
@@ -101,6 +101,7 @@
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-drop/drop-runtime.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -677,7 +678,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","context":"interactive","label":"unnamed-chunk-1","out-height":"","editor-max-height":"","classes":"","read-only":"false","comment":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","dpi":72,"warning":"true","results":"markup","message":"true","out-width":"700px","editor-font-scale":"0.5","fig-height":5,"autorun":"false","fig-width":7},"code":"# set a random seed and generate data\nset.seed(123)\nx <- rnorm(100)\n\n# calculate mean\nmean(x)"}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"# set a random seed and generate data\nset.seed(123)\nx <- rnorm(100)\n\n# calculate mean\nmean(x)","options":{"read-only":"false","results":"markup","autorun":"false","classes":"","editor-quick-suggestions":"false","fig-cap":"","context":"interactive","out-width":"700px","label":"unnamed-chunk-1","fig-width":7,"warning":"true","editor-word-wrap":"true","out-height":"","output":"true","editor-font-scale":"0.5","comment":"","dpi":72,"message":"true","fig-height":5,"editor-max-height":""}}];
 
   </script>
   <script type="module">
@@ -2412,6 +2413,7 @@ RSS International Conference 2024<br><small>Nicola Rennie</small>
   <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-drop/drop-runtime.js"></script>
   <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -2433,6 +2435,7 @@ RSS International Conference 2024<br><small>Nicola Rennie</small>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'drop': {"button":true,"shortcut":"`","engine":"webr","webr":{"packages":[]},"pyodide":{"packages":[]}},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2603,7 +2606,7 @@ RSS International Conference 2024<br><small>Nicola Rennie</small>
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealDrop, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -2613,80 +2616,42 @@ RSS International Conference 2024<br><small>Nicola Rennie</small>
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
