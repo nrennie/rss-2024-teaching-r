@@ -11,6 +11,8 @@ execute:
   echo: true
 filters:
   - webr
+revealjs-plugins:
+  - drop
 ---
 
 # Teaching statistics with R {background-color="#D9DBDB"}
