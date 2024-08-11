@@ -1,0 +1,276 @@
+---
+title: "More interactive, more engaging"
+subtitle: "Teaching R in a lecture environment"
+author: "RSS International Conference 2024<br><small>Nicola Rennie</small>"
+format:
+  LUstyle-revealjs:
+    footer: "[nrennie.rbind.io/rss-2024-teaching-r](https://nrennie.github.io/rss-2024-teaching-r)"
+    logo: "images/CHICASlogo.png"
+    auto-stretch: false
+execute: 
+  echo: true
+filters:
+  - webr
+---
+
+# Teaching statistics with R {background-color="#D9DBDB"}
+
+## About me
+
+::: columns
+::: {.column .right width="70%"}
+
+Lecturer in Health Data Science at [Lancaster Medical School](https://chicas.lancaster-university.uk/).
+
+<br>
+
+Academic background in statistics, with experience in data science consultancy.
+
+<br>
+
+Teaching students with mathematical and non-mathematical backgrounds, at a variety of levels, in both academia and industry. 
+
+<br>
+
+Blog about R and data science at [nrennie.rbind.io/blog](https://nrennie.rbind.io/blog/).
+
+:::
+
+::: {.column width="30%"}
+
+![](images/CHICASlogo.png){fig-align="center" fig-alt="CHICAS logo" width=70%}
+
+:::
+:::
+
+## Teaching statistics with R
+
+::: {.incremental}
+
+* Many introductory (and more advanced) statistics courses also include instruction on using R.
+
+* Many courses teach statistical concepts in lectures, then the practical aspects of using R in separate workshops with smaller groups.
+
+* Including programming examples in a lecture environment isn't always easy.
+
+:::
+
+## Screenshots of RStudio
+
+![](images/rstudio.png){fig-align="center" fig-alt="Screenshot of RStudio showing code and map" width="70%"}
+
+## Screenshots of code
+
+![](images/rstudio-zoom.png){fig-align="center" fig-alt="Screenshot of RStudio showing code" width=80%}
+
+## Code blocks with R Markdown (or Quarto!)
+
+```{r}
+#| eval: false
+#| echo: true
+# read in data
+census <- readxl::read_xlsx("Data/Census2021-health-la.xlsx", skip = 4)
+
+# get local authority map shapefiles
+la_map <- sf::st_read("Data/Local_Authority_Districts_December_2021/LAD_DEC_2021_GB_BGC.shp") 
+
+# calculate percentage that have bad/very bad
+bad_health <- census |> 
+  mutate(Percentage = `Bad health \r\n(age-standardised \r\nproportions)` + 
+           `Very bad health \r\n(age-standardised \r\nproportions)`) |> 
+  select(`Area code`, Percentage) 
+
+# highest / lowest percentage
+slice_max(bad_health, Percentage, n = 1)
+slice_min(bad_health, Percentage, n = 1)
+round(mean(bad_health$Percentage), 1)
+```
+
+## Live coding!
+
+. . . 
+
+::: columns
+::: {.column}
+
+**Pros**
+
+* shows the process of writing code
+
+* teaches students how to debug code
+
+* demonstrates good programming practices
+
+:::
+
+::: {.column}
+
+**Cons**
+
+* Switching between windows 
+
+* More pressure as a demonstrator 
+
+* Hard for students to run the code themselves
+
+:::
+
+:::
+
+# webR {background-color="#D9DBDB"}
+
+## What is webR?
+
+[webR](https://docs.r-wasm.org/webr/latest/) is a version of R that runs in a web browser.
+
+. . .
+
+* You don’t need to install R.
+
+* You don’t need to setup a server.
+
+* It just works (even on your phone).
+
+## What can you do with webR?
+
+Lots of things!
+
+. . . 
+
+::: columns
+::: {.column}
+
+* Download R package datasets to .csv, .xlsx, ... on-the-fly: [tidyverse.r-universe.dev/ggplot2](https://tidyverse.r-universe.dev/ggplot2)
+
+* Shiny apps without a server: [github.com/georgestagg/shiny-standalone-webr-demo](https://github.com/georgestagg/shiny-standalone-webr-demo)
+
+* Create interactive, engaging teaching materials (that work even in lecture environments).
+
+:::
+
+::: {.column}
+![](images/shiny.png){fig-align="center" fig-alt="Screenshot of RStudio showing code" width=80%}
+:::
+:::
+
+## Try it!
+
+[nrennie.rbind.io/rss-2024-teaching-r](https://nrennie.rbind.io/rss-2024-teaching-r)
+
+```{webr-r}
+# set a random seed and generate data
+set.seed(123)
+x <- rnorm(100)
+
+# calculate mean
+mean(x)
+```
+
+## Adding webR to teaching materials
+
+::: columns
+::: {.column}
+
+* Quarto
+  * Combine code with text
+  * Multiple output formats
+  * *Next generation R Markdown*
+* HTML slides
+* Supports LaTeX 
+
+:::
+
+::: {.column}
+
+![](images/quarto.png){fig-align="center" fig-alt="Quarto logo" width=60%}
+
+:::
+:::
+
+## Adding webR to teaching materials
+
+Install the [webR Quarto extension](https://github.com/coatless/quarto-webr):
+
+```md
+quarto add coatless/quarto-webr
+```
+
+. . . 
+
+Add the webR filter to slides:
+
+```md
+format: revealjs
+filters:
+  - webr
+```
+
+## Adding webR to teaching materials
+
+Add a webR code block:
+
+````md
+```{webr-r}
+# set a random seed and generate data
+set.seed(123)
+x <- rnorm(100)
+
+# calculate mean
+mean(x)
+```
+````
+
+## Advantages of webR
+
+* Write and run code without switching between slides and RStudio.
+
+* Students can engage with code in lectures on their phones.
+
+* No set up required for students (and easy to fix mistakes!)
+
+* Use code blocks that are empty, have comments, or have pre-filled code.
+
+## Limitations of webR
+
+* Requires an internet connection.
+
+* Not all packages available. See [rud.is/w/webr-pkgs/](https://rud.is/w/webr-pkgs/).
+
+```{r}
+#| eval: false
+#| echo: true
+webr::install("dplyr")
+```
+
+* Not a replacement for workshops. Teaching R/RStudio/package installation is still important.
+
+## Resources
+
+* Tidyverse blog from George Stagg: [www.tidyverse.org/blog/2023/03/webr-0-1-0/](https://www.tidyverse.org/blog/2023/03/webr-0-1-0/)
+
+* New York R Talk from Bob Rudis: [rud.is/w/2023-nyr-webr](https://rud.is/w/2023-nyr-webr/#/things-before-we-begin)
+
+* Source code for these slides: [github.com/nrennie/rss-2024-teaching-r](https://github.com/nrennie/rss-2024-teaching-r)
+
+## Links
+
+<br>
+
+{{< fa globe >}} [nrennie.rbind.io](https://nrennie.rbind.io/)
+
+<br> 
+
+{{< fa brands linkedin >}} [nicola-rennie](https://www.linkedin.com/in/nicola-rennie/)
+
+<br>
+
+{{< fa brands github >}} [github.com/nrennie/rss-2024-teaching-r](https://github.com/nrennie/rss-2024-teaching-r)
+
+<br>
+
+{{< fa laptop >}} [nrennie.rbind.io/rss-2024-teaching-r](https://nrennie.rbind.io/rss-2024-teaching-r/)
+
+:::
+:::
+
+
