@@ -270,7 +270,4 @@ webr::install("dplyr")
 
 {{< fa laptop >}} [nrennie.rbind.io/rss-2024-teaching-r](https://nrennie.rbind.io/rss-2024-teaching-r/)
 
-:::
-:::
-
 
