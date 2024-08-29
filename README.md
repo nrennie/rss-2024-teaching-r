@@ -1,8 +1,23 @@
-# More interactive, more engaging: teaching R in a lecture environment
+# R without fear: teaching strategies to make R accessible to everyone
 
-Quarto revealjs slides for RSS International Conference 2024 presentation on *More interactive, more engaging: teaching R in a lecture environment*.
+*Organised by Oxford University Statistical Consulting: Maria Christodoulou, Cora Mezger, Mariagrazia Zottoli.*
 
-Conference website: [rss.org.uk/training-events/conference-2024](https://rss.org.uk/training-events/conference-2024/)
+Speakers:
+
+* Sam Dumble: [Learning R in a classroom or online? A natural experiment](https://github.com/stats4sd/dplyr_learnr)
+
+* Nicola Rennie: [More interactive, more engaging - teaching R in a lecture environment](https://nrennie.rbind.io/rss-2024-teaching-r/)
+
+* Jenny Terry : Overcoming Emotional and Attitudinal Barriers in the Teaching and Learning of R
+
+* Maria Christodoulou and Mariagrazia Zottoli: Splitting the Load – Making students comfortable with R before throwing t-tests at them
+
+**Programme**: [virtual.oxfordabstracts.com/#/event/6693](https://virtual.oxfordabstracts.com/#/event/6693/program?session=92655&s=1037)
+
+**Registration**: [rss.org.uk/training-events/conference-2024/registration](https://rss.org.uk/training-events/conference-2024/registration/)
+
+
+## More interactive, more engaging: teaching R in a lecture environment
 
 ### Abstract
 
@@ -10,3 +25,4 @@ The theoretical and practical aspects of statistics are often taught separately 
 
 Live coding, where instructors type and narrate code out loud as they teach with students are asked to code alongside, has been shown to improve engagement and encourage students become active participants rather than passive listeners. However,  for instructors, live coding may seem to interrupt the flow of a lecture or feel daunting. In this talk, I’ll describe ways that lecture materials can be adapted to include more engaging live-coding examples, whilst minimising the pain for both students and instructors alike.
 
+**Slides**: [github.com/nrennie/rss-2024-teaching-r](https://github.com/nrennie/rss-2024-teaching-r)

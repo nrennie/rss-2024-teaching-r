@@ -9,20 +9,19 @@ format:
     auto-stretch: false
 execute: 
   echo: true
+  eval: false
 filters:
   - webr
 revealjs-plugins:
   - drop
 ---
 
-# Teaching statistics with R {background-color="#D9DBDB"}
-
 ## About me
 
 ::: columns
-::: {.column .right width="70%"}
+::: {.column .right width="50%"}
 
-Lecturer in Health Data Science at [Lancaster Medical School](https://chicas.lancaster-university.uk/).
+Lecturer in Health Data Science within [Centre for Health Informatics, Computing, and Statistics](https://chicas.lancaster-university.uk/).
 
 <br>
 
@@ -32,20 +31,19 @@ Academic background in statistics, with experience in data science consultancy.
 
 Teaching students with mathematical and non-mathematical backgrounds, at a variety of levels, in both academia and industry. 
 
-<br>
-
-Blog about R and data science at [nrennie.rbind.io/blog](https://nrennie.rbind.io/blog/).
-
 :::
 
-::: {.column width="30%"}
+::: {.column width="50%"}
 
-![](images/CHICASlogo.png){fig-align="center" fig-alt="CHICAS logo" width=70%}
+![](images/CHICASlogo.png){fig-align="center" fig-alt="CHICAS logo" width=80%}
 
 :::
 :::
 
 ## Teaching statistics with R
+
+::: columns
+::: {.column width="50%"}
 
 ::: {.incremental}
 
@@ -53,19 +51,29 @@ Blog about R and data science at [nrennie.rbind.io/blog](https://nrennie.rbind.i
 
 * Many courses teach statistical concepts in lectures, then the practical aspects of using R in separate workshops with smaller groups.
 
-* Including programming examples in a lecture environment isn't always easy.
+* Including programming examples in a lecture environment isn't always easy (for instructors and students).
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](images/R_logo.png){fig-align="center" fig-alt="R logo" width="80%"}
+
+:::
 
 :::
 
 ## Screenshots of RStudio
 
-![](images/rstudio.png){fig-align="center" fig-alt="Screenshot of RStudio showing code and map" width="70%"}
+![](images/rstudio.png){fig-align="center" fig-alt="Screenshot of RStudio showing code and map" width="80%"}
 
 ## Screenshots of code
 
 ![](images/rstudio-zoom.png){fig-align="center" fig-alt="Screenshot of RStudio showing code" width=80%}
 
-## Code blocks with R Markdown (or Quarto!)
+## Including code blocks
 
 ```{r}
 #| eval: false
@@ -105,7 +113,7 @@ round(mean(bad_health$Percentage), 1)
 
 :::
 
-::: {.column}
+::: {.column .fragment}
 
 **Cons**
 
@@ -119,79 +127,142 @@ round(mean(bad_health$Percentage), 1)
 
 :::
 
-# webR {background-color="#D9DBDB"}
-
-## What is webR?
-
-[webR](https://docs.r-wasm.org/webr/latest/) is a version of R that runs in a web browser.
-
-. . .
-
-* You don’t need to install R.
-
-* You don’t need to setup a server.
-
-* It just works (even on your phone).
-
-## What can you do with webR?
-
-Lots of things!
+## Live coding!
 
 . . . 
 
 ::: columns
 ::: {.column}
 
-* Download R package datasets to .csv, .xlsx, ... on-the-fly: [tidyverse.r-universe.dev/ggplot2](https://tidyverse.r-universe.dev/ggplot2)
+<br>
 
-* Shiny apps without a server: [github.com/georgestagg/shiny-standalone-webr-demo](https://github.com/georgestagg/shiny-standalone-webr-demo)
+**How do we make live coding easier (and better)?**
 
-* Create interactive, engaging teaching materials (that work even in lecture environments).
+<br> 
+
+with webR!
 
 :::
 
 ::: {.column}
-![](images/shiny.png){fig-align="center" fig-alt="Screenshot of RStudio showing code" width=80%}
-:::
+
+![](images/webR.png){fig-align="center" fig-alt="webR logo" width=80%}
+
 :::
 
-## Try it!
+:::
 
-[nrennie.rbind.io/rss-2024-teaching-r](https://nrennie.rbind.io/rss-2024-teaching-r)
+
+## What is webR?
+
+::: columns
+::: {.column}
+
+[webR](https://docs.r-wasm.org/webr/latest/) is a version of R that runs in a web browser.
+
+::: {.fragment}
+
+* You don’t need to install R, or create a cloud account.
+
+* You don’t need to set up a server.
+
+* It just works (even on your phone).
+
+:::
+
+:::
+
+::: {.column}
+
+![](images/webR.png){fig-align="center" fig-alt="webR logo" width=80%}
+
+:::
+
+:::
+
+## Using webR for teaching
+
+::: columns
+::: {.column}
+
+* Interactive code blocks in slides
+
+* Interactive R console from slides
+
+* Deploying Shiny apps
+
+* Quarto Live
+
+:::
+
+::: {.column}
+
+![](images/drop.gif){fig-align="center" fig-alt="Gif of Quarto drop" width=100%}
+
+:::
+
+:::
+
+## But first, Quarto...
+
+Quarto is a way to combine code with text to create a variety of output formats. Essentially, second generation R Markdown that also natively supports other programming languages.
+
+<br>
+
+::: {.fragment}
+  
+Create HTML slides:
+
+```md
+---
+title: "Lecture 1"
+format: revealjs
+---
+```
+
+:::
+
+## Adding code blocks with Quarto
+
+```{r}
+#| echo: fenced
+# set a random seed and generate data
+set.seed(123)
+x <- rnorm(100)
+
+# calculate standard deviation
+sd(x)
+```
+
+<br>
+
+::: {.fragment}
+
+```{r}
+# set a random seed and generate data
+set.seed(123)
+x <- rnorm(100)
+
+# calculate standard deviation
+sd(x)
+```
+
+:::
+
+## Interactive code blocks
 
 ```{webr-r}
 # set a random seed and generate data
 set.seed(123)
 x <- rnorm(100)
 
-# calculate mean
-mean(x)
+# calculate standard deviation
+sd(x)
 ```
 
-## Adding webR to teaching materials
+## Interactive code blocks
 
-::: columns
-::: {.column}
-
-* Quarto
-  * Combine code with text
-  * Multiple output formats
-  * *Next generation R Markdown*
-* HTML slides
-* Supports LaTeX 
-
-:::
-
-::: {.column}
-
-![](images/quarto.png){fig-align="center" fig-alt="Quarto logo" width=60%}
-
-:::
-:::
-
-## Adding webR to teaching materials
-
-Install the [webR Quarto extension](https://github.com/coatless/quarto-webr):
+Install the [Quarto webR extension](https://github.com/coatless/quarto-webr):
 
 ```md
 quarto add coatless/quarto-webr
@@ -199,6 +270,7 @@ quarto add coatless/quarto-webr
 
 . . . 
 
+<br>
 Add the webR filter to slides:
 
 ```md
@@ -207,8 +279,9 @@ filters:
   - webr
 ```
 
-## Adding webR to teaching materials
+. . . 
 
+<br>
 Add a webR code block:
 
 ````md
@@ -222,7 +295,45 @@ mean(x)
 ```
 ````
 
-## Advantages of webR
+## Interactive console
+
+::: {.fragment}
+
+![](images/drop.gif){fig-align="center" fig-alt="Gif of Quarto drop" width=90%}
+:::
+
+## Interactive console
+
+* Press the "`" key to make the console appear/disappear. Alternatively, press the console button at the bottom left of the slide.
+
+* You can load packages automatically.
+
+* The state is maintained over multiple slides.
+
+## Interactive code blocks
+
+Install the [Quarto Drop plugin](https://github.com/r-wasm/quarto-drop):
+
+```md
+quarto add r-wasm/quarto-drop
+```
+. . . 
+
+<br>
+Add the drop plugin to slides:
+
+```md
+format: revealjs
+revealjs-plugins:
+  - drop
+```
+
+## Advantages and disadvantages
+
+::: columns
+::: {.column}
+
+**Advantages**
 
 * Write and run code without switching between slides and RStudio.
 
@@ -232,29 +343,34 @@ mean(x)
 
 * Use code blocks that are empty, have comments, or have pre-filled code.
 
-## Limitations of webR
+:::
+
+::: {.column .fragment}
+
+**Limitations**
 
 * Requires an internet connection.
 
-* Not all packages available. See [rud.is/w/webr-pkgs/](https://rud.is/w/webr-pkgs/).
-
-```{r}
-#| eval: false
-#| echo: true
-webr::install("dplyr")
-```
-
 * Not a replacement for workshops. Teaching R/RStudio/package installation is still important.
+
+:::
+
+:::
 
 ## Resources
 
-* Tidyverse blog from George Stagg: [www.tidyverse.org/blog/2023/03/webr-0-1-0/](https://www.tidyverse.org/blog/2023/03/webr-0-1-0/)
+* Tidyverse blog from George Stagg: [www.tidyverse.org/blog/2024/04/webr-0-3-1](https://www.tidyverse.org/blog/2024/04/webr-0-3-1/)
 
-* New York R Talk from Bob Rudis: [rud.is/w/2023-nyr-webr](https://rud.is/w/2023-nyr-webr/#/things-before-we-begin)
+* Video on *Creating your first webR-powered Quarto document* by James Balamuta: [youtu.be/DoRR2S5lLvk?t=5](https://youtu.be/DoRR2S5lLvk?t=5)
+
+* Quarto Live: [github.com/r-wasm/quarto-live](https://github.com/r-wasm/quarto-live)
 
 * Source code for these slides: [github.com/nrennie/rss-2024-teaching-r](https://github.com/nrennie/rss-2024-teaching-r)
 
 ## Links
+
+::: columns
+::: {.column}
 
 <br>
 
@@ -272,4 +388,12 @@ webr::install("dplyr")
 
 {{< fa laptop >}} [nrennie.rbind.io/rss-2024-teaching-r](https://nrennie.rbind.io/rss-2024-teaching-r/)
 
+:::
 
+::: {.column}
+
+![](images/qr_code.png){fig-align="center" fig-alt="QR code" width=80%}
+
+:::
+
+:::
