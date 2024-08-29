@@ -7,6 +7,8 @@ format:
     footer: "[nrennie.rbind.io/rss-2024-teaching-r](https://nrennie.github.io/rss-2024-teaching-r)"
     logo: "images/CHICASlogo.png"
     auto-stretch: false
+    self-contained: true
+    embed-resources: true
 execute: 
   echo: true
   eval: false
