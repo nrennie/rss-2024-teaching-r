@@ -4,7 +4,7 @@
 
 Speakers:
 
-* Sam Dumble: Learning R in a classroom or online? A natural experiment
+* Sam Dumble: [Learning R in a classroom or online? A natural experiment](https://github.com/stats4sd/dplyr_learnr)
 
 * Nicola Rennie: [More interactive, more engaging - teaching R in a lecture environment](https://nrennie.rbind.io/rss-2024-teaching-r/)
 
