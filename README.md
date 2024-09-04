@@ -8,14 +8,11 @@ Speakers:
 
 * Nicola Rennie: [More interactive, more engaging - teaching R in a lecture environment](https://nrennie.rbind.io/rss-2024-teaching-r/)
 
-* Jenny Terry : Overcoming Emotional and Attitudinal Barriers in the Teaching and Learning of R
+* Jenny Terry : Overcoming Emotional and Attitudinal Barriers in the Teaching and Learning of R [CANCELLED]
 
-* Maria Christodoulou and Mariagrazia Zottoli: Splitting the Load – Making students comfortable with R before throwing t-tests at them
+* Maria Christodoulou and Mariagrazia Zottoli: Splitting the Load – [Making students comfortable with R before throwing t-tests at them](https://github.com/OxUSC/RSS-slides)
 
 **Programme**: [virtual.oxfordabstracts.com/#/event/6693](https://virtual.oxfordabstracts.com/#/event/6693/program?session=92655&s=1037)
-
-**Registration**: [rss.org.uk/training-events/conference-2024/registration](https://rss.org.uk/training-events/conference-2024/registration/)
-
 
 ## More interactive, more engaging: teaching R in a lecture environment
 
